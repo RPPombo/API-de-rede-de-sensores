@@ -1,8 +1,9 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
+import { colors } from '../utils/theme';
 
-export default function WelcomeScreen(): JSX.Element {
+export default function WelcomeScreen() {
   const router = useRouter();
 
   return (
@@ -12,10 +13,29 @@ export default function WelcomeScreen(): JSX.Element {
         Bem-vindo! Este aplicativo simula sensores inteligentes para prever riscos de deslizamentos.
       </Text>
 
-      <Button
-        title="Começar Monitoramento"
-        onPress={() => router.push('/inserir')}
-      />
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Inserir Dados"
+          onPress={() => router.push('../inserir')}
+          color={colors.primary}
+        />
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Histórico"
+          onPress={() => router.push('../historico')}
+          color={colors.primary}
+        />
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Ações de Mitigação"
+          onPress={() => router.push('../acoes')}
+          color={colors.primary}
+        />
+      </View>
     </View>
   );
 }
@@ -23,21 +43,24 @@ export default function WelcomeScreen(): JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: colors.background,
     padding: 24,
-    backgroundColor: '#e8f0fe',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 26,
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    color: '#1e3a8a',
+    color: colors.primary,
   },
   subtitle: {
     fontSize: 16,
     marginBottom: 30,
     textAlign: 'center',
-    color: '#334155',
+    color: colors.textPrimary,
+  },
+  buttonContainer: {
+    marginVertical: 8,
   },
 });
